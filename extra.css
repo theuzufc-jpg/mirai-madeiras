@@ -167,7 +167,11 @@ input[aria-invalid=true]{border-color:#c0392b;box-shadow:0 0 0 3px #c0392b1f}
 }
 main{overflow-x:clip}
 /* ---------- Notebook girando: vídeo controlado pela rolagem (substitui o giro antigo) ---------- */
-.social .machine:has(.turn){background:none;padding:0}
-.turn{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:#e6efe9;box-shadow:0 30px 70px #073e2d14}
-.turn video,.turn img{display:block;width:100%;height:100%;object-fit:cover}
+.social .machine:has(.turn){background:none;padding:0;border-radius:0}
+@media(min-width:761px){.socialGrid:has(.turn){grid-template-columns:.62fr 1.38fr;gap:clamp(20px,3vw,48px)}.social .machine:has(.turn){margin-right:clamp(-60px,-3vw,0px)}}
+.turn{position:relative;aspect-ratio:984/660;background:none}
+.turn video,.turn img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.turn .turnEnd{mix-blend-mode:normal;opacity:0;transition:opacity .35s ease}
+.turn.done .turnEnd{opacity:1}
+.turn [hidden]{display:none}
 @media(max-width:760px){.turn{display:none}}

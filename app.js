@@ -276,7 +276,7 @@ function setupMotion() {
     if (storyImg && !storyImg.closest('[hidden]')) { const r = storyImg.parentElement.getBoundingClientRect(); const p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height))); storyImg.style.setProperty('--sp', p.toFixed(3)); }
     if (scene && video && matchMedia('(min-width:761px)').matches) {
       // começa a girar quando a seção entra na tela e termina de frente quando ela chega perto do meio
-      vTarget = Math.min(1, Math.max(0, (innerHeight - scene.getBoundingClientRect().top) / (innerHeight * .85)));
+      const r = video.parentElement.getBoundingClientRect(); vTarget = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * .5 + r.height * .5))); video.parentElement.classList.toggle('done', vTarget > .985 && !vFailed);
       seekVideo();
     }
   }

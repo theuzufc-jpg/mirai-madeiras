@@ -28,7 +28,7 @@ for (const path of [...new Set([...site, ...products])]) {
 }
 // vídeo do notebook: vem da pasta assets/ ou do repositório público no GitHub
 const VIDEO = 'assets/video/notebook-giro.mp4', RAW = process.env.VIDEO_RAW || 'https://raw.githubusercontent.com/theuzufc-jpg/mirai-madeiras/main/';
-for (const v of [VIDEO, 'assets/video/notebook-giro-inicio.webp']) {
+for (const v of [VIDEO, 'assets/video/notebook-giro-inicio.webp','assets/video/notebook-giro-fim.webp']) {
   if (await exists(join(dist, v))) continue;
   try { const r = await fetch(RAW + v, { signal: AbortSignal.timeout(25000) }); if (!r.ok) throw new Error('HTTP ' + r.status); await mkdir(dirname(join(dist, v)), { recursive: true }); await writeFile(join(dist, v), Buffer.from(await r.arrayBuffer())); console.log('Baixado do GitHub:', v); }
   catch (e) { console.log('AVISO: sem', v, '-', e.message, '(o site mostra a foto do notebook no lugar)'); }
