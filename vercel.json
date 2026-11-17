@@ -1,0 +1,70 @@
+{
+  "buildCommand": "node tools/build.mjs",
+  "outputDirectory": "dist",
+  "installCommand": "echo sem-dependencias",
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/produto/:id/",
+      "destination": "/?pagina=catalogo&produto=:id",
+      "permanent": false
+    },
+    {
+      "source": "/produto/:id",
+      "destination": "/?pagina=catalogo&produto=:id",
+      "permanent": false
+    },
+    {
+      "source": "/catalogo.html",
+      "destination": "/?pagina=catalogo",
+      "permanent": false
+    },
+    {
+      "source": "/painel",
+      "destination": "/admin/",
+      "permanent": false
+    },
+    {
+      "source": "/painel/",
+      "destination": "/admin/",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(webp|png|jpg)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}

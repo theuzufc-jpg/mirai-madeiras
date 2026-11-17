@@ -1,0 +1,292 @@
+[
+ [
+  "PASSOU",
+  "intro aparece na 1ª visita",
+  ""
+ ],
+ [
+  "PASSOU",
+  "intro termina sozinha (~2,7 s) e libera a rolagem",
+  ""
+ ],
+ [
+  "PASSOU",
+  "título do hero entra animado",
+  ""
+ ],
+ [
+  "PASSOU",
+  "390px: sem rolagem lateral",
+  ""
+ ],
+ [
+  "PASSOU",
+  "todos os blocos animados aparecem ao rolar",
+  "0 faltando"
+ ],
+ [
+  "PASSOU",
+  "contador de anos chega a 54",
+  ""
+ ],
+ [
+  "PASSOU",
+  "contador de departamentos = 6 (vindo do banco)",
+  ""
+ ],
+ [
+  "PASSOU",
+  "barra de progresso acompanha a rolagem",
+  ""
+ ],
+ [
+  "PASSOU",
+  "intro não repete na mesma visita",
+  ""
+ ],
+ [
+  "PASSOU",
+  "menu do celular abre",
+  ""
+ ],
+ [
+  "PASSOU",
+  "link \"Encomendar\" leva à seção de pedido",
+  ""
+ ],
+ [
+  "PASSOU",
+  "pedido vazio mostra erro claro",
+  "Informe o material e um WhatsApp com DDD."
+ ],
+ [
+  "PASSOU",
+  "atalho \"Esta semana\" preenche a data (+7 dias)",
+  "2026-11-24"
+ ],
+ [
+  "PASSOU",
+  "\"Retirar na loja\" esconde o campo de endereço",
+  ""
+ ],
+ [
+  "PASSOU",
+  "WhatsApp ganha máscara (12) 99111-2222",
+  "(12) 99111-2222"
+ ],
+ [
+  "PASSOU",
+  "pedido enviado mostra \"Pedido nº 1\"",
+  ""
+ ],
+ [
+  "PASSOU",
+  "pedido gravado no banco com prazo, modo e local",
+  "{\"id\":1,\"material\":\"Telha de fibrocimento 2,44 m\",\"quantidade\":\"30 peças\",\"detalhes\":\"\",\"nome\":\"João Teste\",\"whatsapp\":\"(12) 99111-2222\",\"local_entrega\":\"São Sebastião, Maresias\",\"prazo\":\"2026-11-24\",\"modo\":\"entrega\",\"status\":\"novo\",\"observacao_interna\":\"\",\"criado_em\":\"2026-11-17T10:05:18.257Z\"}"
+ ],
+ [
+  "PASSOU",
+  "botão do WhatsApp leva o nº do pedido",
+  ""
+ ],
+ [
+  "PASSOU",
+  "1440px: sem rolagem lateral",
+  ""
+ ],
+ [
+  "PASSOU",
+  "notebook do Instagram gira com a rolagem (original)",
+  ""
+ ],
+ [
+  "PASSOU",
+  "movimento reduzido: sem intro e conteúdo visível",
+  ""
+ ],
+ [
+  "PASSOU",
+  "/catalogo/ abre o catálogo",
+  ""
+ ],
+ [
+  "PASSOU",
+  "22 materiais vindos do banco",
+  "22 materiais encontrados"
+ ],
+ [
+  "PASSOU",
+  "filtros na ordem do original",
+  "Todos,Madeiras,Construção,Hidráulica,Acabamentos,Pintura,Elétrica"
+ ],
+ [
+  "PASSOU",
+  "preço e estoque aparecem quando o dono preenche",
+  "Em estoque · 40MadeirasViga de garapeira5 × 15 cm · 3 mR$ 89,90 / peçaAdicionar à lista"
+ ],
+ [
+  "PASSOU",
+  "material esgotado fica com \"Indisponível\" e botão travado",
+  ""
+ ],
+ [
+  "PASSOU",
+  "filtros contam certo",
+  "{\"Madeiras\":6,\"Construção\":4,\"Hidráulica\":4,\"Acabamentos\":3,\"Pintura\":2,\"Elétrica\":3}"
+ ],
+ [
+  "PASSOU",
+  "busca sem acento",
+  ""
+ ],
+ [
+  "PASSOU",
+  "busca sem resultado mostra aviso",
+  ""
+ ],
+ [
+  "PASSOU",
+  "\"Pedir material\" leva o que foi buscado para o pedido",
+  ""
+ ],
+ [
+  "PASSOU",
+  "detalhe do produto abre com medida, preço e orientação",
+  ""
+ ],
+ [
+  "PASSOU",
+  "contador da lista = 2",
+  ""
+ ],
+ [
+  "PASSOU",
+  "mensagem do orçamento igual ao original",
+  "Olá, Mirai! Gostaria de um orçamento.\n12 × Viga de garapeira — 4 m\n1 × Cabo PP"
+ ],
+ [
+  "PASSOU",
+  "link /produto/disjuntor/ abre o detalhe",
+  ""
+ ],
+ [
+  "PASSOU",
+  "catálogo 1440: 4 colunas, sem rolagem lateral",
+  ""
+ ],
+ [
+  "PASSOU",
+  "painel abre na tela de login com o e-mail preenchido",
+  ""
+ ],
+ [
+  "PASSOU",
+  "senha errada: \"E-mail ou senha incorretos.\"",
+  ""
+ ],
+ [
+  "PASSOU",
+  "login certo entra e lista 22 materiais",
+  "22 materiais · 22 no site · 0 ocultos"
+ ],
+ [
+  "PASSOU",
+  "novo material salvo com preço 49.9, estoque e foto enviada",
+  "POST /storage/v1/object/materiais/telha-de-fibrocimento-nqj3-mwkj19fh.webp | POST /rest/v1/materiais"
+ ],
+ [
+  "PASSOU",
+  "novo material aparece no fim da lista do painel",
+  ""
+ ],
+ [
+  "PASSOU",
+  "botão ▲ sobe o material uma posição",
+  ""
+ ],
+ [
+  "PASSOU",
+  "ocultar marca \"Oculto no site\"",
+  ""
+ ],
+ [
+  "PASSOU",
+  "editar preço do Cabo PP → R$ 7,50 / m",
+  ""
+ ],
+ [
+  "PASSOU",
+  "preço inválido é recusado com aviso",
+  ""
+ ],
+ [
+  "PASSOU",
+  "excluir pede confirmação e remove",
+  ""
+ ],
+ [
+  "PASSOU",
+  "aba Pedidos mostra o pedido do site com selo de novo",
+  ""
+ ],
+ [
+  "PASSOU",
+  "\"Responder no WhatsApp\" vai para o cliente com o nº do pedido",
+  "https://wa.me/5512991112222?text=Ol%C3%A1%2C%20Jo%C3%A3o!%20Aqui%20%C3%A9%20da%20Mirai%20Madeireira%2C%20sobre%20o%20seu%20pedido%20n%C2%BA%201%20(Telha%20de%20fibrocimento%202%2C44%20m)."
+ ],
+ [
+  "PASSOU",
+  "mudar para \"Atendido\" tira de \"Em aberto\"",
+  ""
+ ],
+ [
+  "PASSOU",
+  "anotação interna gravada",
+  ""
+ ],
+ [
+  "PASSOU",
+  "ajuste \"mostrar preços\" desligado e salvo",
+  ""
+ ],
+ [
+  "PASSOU",
+  "senhas diferentes são recusadas",
+  ""
+ ],
+ [
+  "PASSOU",
+  "sessão continua após recarregar o painel",
+  ""
+ ],
+ [
+  "PASSOU",
+  "site: novo material aparece, oculto e excluído somem",
+  "21 itens"
+ ],
+ [
+  "PASSOU",
+  "site: novo departamento \"Coberturas\" vira filtro",
+  ""
+ ],
+ [
+  "PASSOU",
+  "site: preços somem quando o ajuste é desligado",
+  ""
+ ],
+ [
+  "PASSOU",
+  "site: foto enviada pelo painel aparece",
+  ""
+ ],
+ [
+  "PASSOU",
+  "banco fora do ar: catálogo usa a cópia local (22 itens)",
+  ""
+ ],
+ [
+  "PASSOU",
+  "nenhum erro de script no console",
+  ""
+ ]
+]

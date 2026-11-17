@@ -1,0 +1,173 @@
+/* ===== Mirai v4 — camadas novas sobre o CSS original (style.css fica intacto) ===== */
+:root{--ease:cubic-bezier(.22,1,.36,1);--wood:#c8925a}
+
+/* ---------- Intro: anéis de madeira + raiz + cortina ---------- */
+#intro{animation:none;background:#052f22;overflow:hidden;gap:22px;align-content:center}
+#intro .introStage{position:relative;width:min(300px,62vw);aspect-ratio:1;display:grid;place-items:center}
+#intro .rings{position:absolute;inset:0;width:100%;height:100%;color:#2f7a55;opacity:.9}
+#intro .rings circle{stroke-width:1.1;stroke-dasharray:1260;stroke-dashoffset:1260;animation:ring 1.2s var(--ease) forwards}
+#intro .rings circle:nth-child(1){animation-delay:.05s;stroke:#5fae84}
+#intro .rings circle:nth-child(2){animation-delay:.13s}
+#intro .rings circle:nth-child(3){animation-delay:.21s;stroke:#3f8d64}
+#intro .rings circle:nth-child(4){animation-delay:.29s}
+#intro .rings circle:nth-child(5){animation-delay:.37s;stroke:#2a6c4b}
+#intro .rings circle:nth-child(6){animation-delay:.45s}
+#intro .rings circle:nth-child(7){animation-delay:.53s;stroke:#1f5a3e}
+@keyframes ring{to{stroke-dashoffset:0}}
+#intro .introStage img{width:34%;border-radius:50%;animation:root .9s .35s var(--ease) both;box-shadow:0 0 0 10px #052f22,0 0 60px #4fd18b55}
+#intro .introLine{font-size:clamp(19px,2.4vw,28px);font-weight:650;letter-spacing:-.03em;color:white;max-width:none;display:flex;flex-wrap:wrap;justify-content:center;gap:0 .32em;padding-inline:24px}
+#intro .introLine span{display:inline-block;opacity:0;transform:translateY(.7em);filter:blur(6px);animation:word .6s var(--ease) forwards}
+#intro .introLine span:nth-child(1){animation-delay:.75s}#intro .introLine span:nth-child(2){animation-delay:.83s}#intro .introLine span:nth-child(3){animation-delay:.91s}#intro .introLine span:nth-child(4){animation-delay:.99s}#intro .introLine span:nth-child(5){animation-delay:1.07s}#intro .introLine span:nth-child(6){animation-delay:1.15s;color:#9fdcb8}
+@keyframes word{to{opacity:1;transform:none;filter:none}}
+#intro .introYear{display:flex;align-items:center;gap:14px;color:#cfe9da;font-size:11px;font-weight:740;letter-spacing:.24em;opacity:0;animation:fadeIn .5s 1.25s forwards;max-width:none}
+#intro .introYear i{display:block;width:0;height:1px;background:#cfe9da;animation:grow .7s 1.3s var(--ease) forwards}
+#intro .introYear b{font-variant-numeric:tabular-nums;color:white}
+@keyframes grow{to{width:46px}}
+@keyframes fadeIn{to{opacity:1}}
+#intro .curtain{position:absolute;left:0;right:0;height:50.5%;background:#052f22;z-index:-1;transition:transform .9s var(--ease)}
+#intro .curtain.top{top:0}#intro .curtain.bottom{bottom:0}
+#intro.opening{background:transparent;pointer-events:none}
+#intro.opening .curtain.top{transform:translateY(-101%)}
+#intro.opening .curtain.bottom{transform:translateY(101%)}
+#intro.opening .introStage,#intro.opening .introLine,#intro.opening .introYear,#intro.opening .skipIntro{opacity:0;transform:scale(.92);transition:opacity .35s,transform .5s var(--ease)}
+#intro .skipIntro{z-index:2;font-size:13px;opacity:.75}
+#intro .skipIntro:hover{opacity:1}
+body.introing{overflow:hidden}
+body.introing .hero{transform:scale(1.08)}
+.hero{transition:transform 1.4s var(--ease)}
+
+/* ---------- Hero: entrada em sequência + parallax + seta ---------- */
+.js [data-hero]{opacity:0;transform:translateY(26px)}
+.js .heroReady [data-hero]{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .heroReady [data-hero="2"]{transition-delay:.12s}.js .heroReady [data-hero="3"]{transition-delay:.24s}.js .heroReady [data-hero="4"]{transition-delay:.36s}
+.hero{background-position:center calc(52% + var(--py,0px))}
+.scrollCue{position:absolute;left:50%;bottom:22px;width:26px;height:42px;border:1.5px solid #ffffffb0;border-radius:14px;transform:translateX(-50%);opacity:.85}
+.scrollCue i{position:absolute;left:50%;top:8px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:white;animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+
+/* ---------- Barra de progresso de leitura ---------- */
+.progress{position:fixed;inset:0 0 auto;height:3px;z-index:20;pointer-events:none}
+.progress i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,#0a6b44,#4fbf83)}
+header{transition:box-shadow .3s}
+header.scrolled{box-shadow:0 6px 24px #073e2d14}
+
+/* ---------- Revelar ao rolar ---------- */
+.js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease);transition-delay:calc(var(--d,0) * 90ms)}
+.js [data-reveal].in{opacity:1;transform:none}
+.js [data-reveal="clip"]{opacity:1;transform:none;clip-path:inset(12% 12% 12% 12% round 8px);transition:clip-path 1.2s var(--ease)}
+.js [data-reveal="clip"].in{clip-path:inset(0 0 0 0 round 8px)}
+.storyImg{overflow:hidden;border-radius:8px}
+.storyImg img{width:100%;height:400px;object-fit:cover;transform:scale(calc(1.14 - var(--sp,0) * .14));will-change:transform}
+
+/* ---------- Departamentos ---------- */
+.departments .dimg{display:block;overflow:hidden;border-radius:3px;margin-bottom:8px}
+.departments .dimg img{margin:0;transition:transform .7s var(--ease)}
+.departments a:hover .dimg img{transform:scale(1.06)}
+.departments a>span:last-child{display:inline-flex;align-items:center;gap:8px}
+.departments a>span:last-child::after{content:"→";font-weight:500;opacity:0;transform:translateX(-6px);transition:.35s var(--ease)}
+.departments a:hover>span:last-child::after{opacity:1;transform:none}
+
+/* ---------- Faixa em movimento ---------- */
+.marquee{overflow:hidden;border-bottom:1px solid var(--line);padding-block:16px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .track{display:flex;align-items:center;gap:26px;width:max-content;animation:marquee 38s linear infinite}
+.marquee span{font-size:clamp(18px,2vw,28px);font-weight:700;letter-spacing:-.04em;white-space:nowrap;color:var(--ink)}
+.marquee span:nth-of-type(even){color:transparent;-webkit-text-stroke:1px var(--ink)}
+.marquee i{width:9px;height:9px;border-radius:50%;background:#4fbf83;flex:none}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- História: números ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 0;padding:18px 0;border-block:1px solid var(--line)}
+.stats div{margin:0}
+.stats dt b{font-size:clamp(26px,2.6vw,38px);letter-spacing:-.05em;font-variant-numeric:tabular-nums;color:var(--green)}
+.stats dd{margin:2px 0 0;font-size:12px;color:var(--muted);line-height:1.3}
+
+/* ---------- Encomenda (pedido de material fora do catálogo) ---------- */
+.order{background:linear-gradient(180deg,#fff, var(--soft));padding-block:clamp(48px,7vw,104px);border-top:1px solid var(--line)}
+.orderGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,6vw,96px);align-items:start}
+.orderIntro{position:sticky;top:110px}
+.orderIntro h2{margin-top:12px}
+.steps{list-style:none;padding:0;margin-top:30px;display:grid;gap:18px}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.steps b{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:white;font-size:16px}
+.steps strong{display:block;font-size:17px;letter-spacing:-.02em}
+.steps span{color:var(--muted);font-size:14px}
+.orderCard{background:white;border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,34px);box-shadow:0 24px 60px #073e2d14;margin:0;position:relative}
+.orderCard::before{content:"";position:absolute;left:0;right:0;top:56px;border-top:2px dashed #cfe0d6}
+.slipHead{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:740;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:-4px 0 14px;height:20px}
+.slipNo{font-variant-numeric:tabular-nums}
+.quick{display:flex;flex-wrap:wrap;gap:7px;margin-top:-6px}
+.quick button,.mode span{border:1px solid #bcd0c3;background:white;border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;transition:.2s}
+.quick button[aria-pressed=true]{background:var(--ink);color:white;border-color:var(--ink)}
+.mode{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mode legend{font-size:14px;font-weight:650;margin-bottom:8px;width:100%}
+.mode label{display:block;position:relative}
+.mode input{position:absolute;opacity:0;width:1px;height:1px}
+.mode span{display:inline-flex;padding:10px 16px;font-size:14px;cursor:pointer}
+.mode input:checked+span{background:var(--ink);color:white;border-color:var(--ink)}
+.mode input:focus-visible+span{outline:3px solid #34a36a;outline-offset:3px}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.formError{color:#a12d1f;font-size:14px;font-weight:600;margin:0}
+.formError:empty{display:none}
+input[aria-invalid=true]{border-color:#c0392b;box-shadow:0 0 0 3px #c0392b1f}
+#order-form .button{min-width:200px}
+#order-form .button[disabled]{opacity:.65;cursor:progress}
+.orderCard.done{text-align:center;display:grid;justify-items:center;gap:12px;padding-block:44px}
+.orderCard.done::before{display:none}
+.orderCard.done p{margin:0 auto}
+.doneNo{font-weight:700;color:var(--ink);letter-spacing:.06em}
+.check svg{width:76px;height:76px;stroke:#0a6b44;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.check circle{stroke-dasharray:160;stroke-dashoffset:160;animation:draw .7s var(--ease) forwards}
+.check path{stroke-dasharray:40;stroke-dashoffset:40;animation:draw .45s .55s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- Catálogo: carregamento, preço e estoque ---------- */
+.skel .pack{background:linear-gradient(100deg,#eef3f0 30%,#f8fbf9 50%,#eef3f0 70%);background-size:300% 100%;animation:shimmer 1.3s linear infinite}
+.skel .bar{height:12px;border-radius:4px;background:#eef3f0;margin-top:10px}
+.skel .bar.w{width:70%;height:18px}
+@keyframes shimmer{to{background-position:-150% 0}}
+.js .product.enter{opacity:0;transform:translateY(22px)}
+.product{transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.pack{position:relative}
+.badge{position:absolute;left:10px;top:10px;font-size:11px;font-weight:700;letter-spacing:.04em;padding:4px 9px;border-radius:999px;background:white;color:var(--ink);box-shadow:0 2px 10px #0001}
+.badge.ok{background:#e3f4ea;color:#0a5b39}
+.badge.out{background:#2b2b2b;color:white}
+.price{display:block;margin-top:8px;font-weight:750;color:var(--ink);font-size:15px;letter-spacing:-.01em}
+.price em{font-style:normal;font-weight:500;color:var(--muted);font-size:12px}
+.product button[disabled]{opacity:.55;cursor:not-allowed}
+.askBanner{margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:22px 24px;border-radius:12px;background:var(--ink);color:white;position:static!important}
+.askBanner b{display:block;font-size:19px;letter-spacing:-.02em}
+.askBanner span{color:#d7ece0;font-size:14px}
+.askBanner .button{background:white;color:var(--ink)}
+#product-body .price{font-size:20px;margin-top:10px}
+#product-body .spec{font-weight:600;color:var(--ink);margin-top:6px}
+
+/* ---------- Toque e foco ---------- */
+.button{position:relative;overflow:hidden}
+.button:active{transform:translateY(1px)}
+
+@media(max-width:760px){
+ .orderGrid{grid-template-columns:1fr;gap:26px}
+ .orderIntro{position:static}
+ .steps{margin-top:20px;gap:12px}
+ .orderCard{border-radius:14px}
+ .stats{gap:8px}.stats dd{font-size:11px}
+ .storyImg img{height:215px}
+ .storyCompact>.storyImg{order:2}
+ .scrollCue{display:none}
+ .marquee{padding-block:12px}
+ #intro .introStage{width:min(240px,64vw)}
+ .formpair{grid-template-columns:1fr}
+ .askBanner{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){
+ .js [data-reveal],.js [data-hero],.js .product.enter{opacity:1!important;transform:none!important;clip-path:none!important}
+ .marquee .track{animation:none}
+ .storyImg img{transform:none}
+ .hero{transition:none}
+}
+main{overflow-x:clip}
+/* ---------- Notebook girando: vídeo controlado pela rolagem (substitui o giro antigo) ---------- */
+.social .machine:has(.turn){background:none;padding:0}
+.turn{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:#e6efe9;box-shadow:0 30px 70px #073e2d14}
+.turn video,.turn img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:760px){.turn{display:none}}

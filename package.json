@@ -1,0 +1,1 @@
+{ "name": "mirai-madeiras", "private": true, "version": "4.0.0", "type": "module", "scripts": { "build": "node tools/build.mjs" } }

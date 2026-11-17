@@ -1,0 +1,119 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#062f22"><title>Painel Mirai</title><link rel="icon" href="/logo.webp"><link rel="stylesheet" href="/admin/admin.css"><script src="/config.js"></script><script src="/admin/admin.js" defer></script></head><body>
+
+<section id="login" class="login" hidden>
+ <form id="login-form" class="loginCard" novalidate>
+  <img src="/logo.webp" alt="" width="64" height="64">
+  <h1>Painel Mirai</h1>
+  <p>Entre para cuidar dos materiais, preços, estoque e pedidos.</p>
+  <label>E-mail<input name="email" type="email" autocomplete="username" required value="theuzbnss@gmail.com"></label>
+  <label>Senha<span class="pw"><input name="password" type="password" autocomplete="current-password" required minlength="6"><button type="button" class="ghost sm" data-show>Mostrar</button></span></label>
+  <p class="err" role="alert"></p>
+  <button class="btn" type="submit">Entrar</button>
+  <a class="back" href="/">← Voltar ao site</a>
+ </form>
+</section>
+
+<div id="app" hidden>
+ <header class="top">
+  <a class="brand" href="/" target="_blank" rel="noopener"><img src="/logo.webp" alt="" width="34" height="34"><span>Mirai <small>painel</small></span></a>
+  <nav class="tabs" role="tablist" aria-label="Seções do painel">
+   <button role="tab" data-tab="materiais" aria-selected="true">Materiais</button>
+   <button role="tab" data-tab="pedidos" aria-selected="false">Pedidos <b class="dot" data-new-count hidden>0</b></button>
+   <button role="tab" data-tab="ajustes" aria-selected="false">Ajustes</button>
+  </nav>
+  <div class="who"><span data-user></span><button class="ghost sm" data-logout>Sair</button></div>
+ </header>
+
+ <main class="wrap">
+  <!-- MATERIAIS -->
+  <section data-panel="materiais">
+   <div class="bar">
+    <div><h1>Materiais</h1><p class="muted" data-mat-summary>Carregando…</p></div>
+    <button class="btn" data-new>+ Novo material</button>
+   </div>
+   <div class="tools">
+    <input type="search" id="mat-search" placeholder="Buscar por nome, medida ou departamento">
+    <select id="mat-dept" aria-label="Filtrar por departamento"><option value="">Todos os departamentos</option></select>
+    <select id="mat-state" aria-label="Filtrar por situação"><option value="">Tudo</option><option value="ativo">No site</option><option value="oculto">Ocultos</option><option value="esgotado">Esgotados</option><option value="disponivel">Em estoque</option><option value="semPreco">Sem preço</option></select>
+   </div>
+   <div id="mat-list" class="matList" aria-live="polite"></div>
+  </section>
+
+  <!-- PEDIDOS -->
+  <section data-panel="pedidos" hidden>
+   <div class="bar"><div><h1>Pedidos de material</h1><p class="muted">O que os clientes pediram pela seção “Não achou o material?” do site.</p></div><button class="ghost" data-reload-orders>Atualizar</button></div>
+   <div class="chips" role="group" aria-label="Filtrar pedidos">
+    <button data-ofilter="aberto" aria-pressed="true">Em aberto</button><button data-ofilter="novo" aria-pressed="false">Novos</button><button data-ofilter="em_andamento" aria-pressed="false">Em andamento</button><button data-ofilter="atendido" aria-pressed="false">Atendidos</button><button data-ofilter="arquivado" aria-pressed="false">Arquivados</button><button data-ofilter="todos" aria-pressed="false">Todos</button>
+   </div>
+   <div id="order-list" class="orders" aria-live="polite"></div>
+  </section>
+
+  <!-- AJUSTES -->
+  <section data-panel="ajustes" hidden>
+   <div class="bar"><div><h1>Ajustes</h1><p class="muted">Configurações que valem para o site inteiro.</p></div></div>
+   <div class="cards">
+    <form id="settings-form" class="card">
+     <h2>Loja</h2>
+     <label class="switch"><input type="checkbox" name="mostrar_precos"><span></span>Mostrar preços no site <em class="muted">(só aparece nos materiais que têm preço)</em></label>
+     <label>WhatsApp de vendas (com DDI e DDD)<input name="whatsapp" inputmode="numeric" pattern="\d{12,13}" placeholder="5512991862507"></label>
+     <p class="ok" role="status"></p>
+     <button class="btn">Salvar ajustes</button>
+    </form>
+    <form id="password-form" class="card">
+     <h2>Trocar senha do painel</h2>
+     <label>Nova senha<input name="p1" type="password" minlength="8" autocomplete="new-password" required></label>
+     <label>Repita a nova senha<input name="p2" type="password" minlength="8" autocomplete="new-password" required></label>
+     <p class="ok" role="status"></p>
+     <button class="btn">Trocar senha</button>
+    </form>
+    <div class="card">
+     <h2>Atalhos</h2>
+     <p><a href="/" target="_blank" rel="noopener">Abrir o site</a> · <a href="/?pagina=catalogo" target="_blank" rel="noopener">Abrir o catálogo</a></p>
+     <p class="muted">Tudo que você salva aqui aparece no site na hora (basta atualizar a página do site).</p>
+    </div>
+   </div>
+  </section>
+ </main>
+</div>
+
+<!-- Editor de material -->
+<dialog id="editor" aria-labelledby="ed-title">
+ <form id="ed-form" method="dialog" novalidate>
+  <div class="edHead"><h2 id="ed-title">Novo material</h2><button type="button" class="ghost sm" data-close>Fechar</button></div>
+  <div class="edGrid">
+   <div class="photoBox">
+    <div class="photo"><img id="ed-photo" alt="" src="/logo.webp"><span class="uploading" hidden>Enviando foto…</span></div>
+    <label class="btn ghost file">Escolher foto<input type="file" accept="image/*" id="ed-file"></label>
+    <p class="muted tiny">A foto é ajustada automaticamente (até 1200 px, formato leve).</p>
+   </div>
+   <div class="fields">
+    <label>Nome do material *<input name="nome" required maxlength="80" placeholder="Ex.: Viga de garapeira"></label>
+    <label>Departamento *<input name="departamento" required maxlength="30" list="dept-options" placeholder="Escolha ou digite um novo"><datalist id="dept-options"></datalist></label>
+    <label>Medida / descrição curta<input name="spec" maxlength="80" placeholder="Ex.: 5 × 15 cm · 3 m"></label>
+    <div class="pair">
+     <label>Preço (R$)<input name="preco" inputmode="decimal" placeholder="Deixe vazio = sob consulta"></label>
+     <label>Unidade<input name="unidade" maxlength="20" list="unit-options" placeholder="m, saco, peça…"><datalist id="unit-options"><option>unidade</option><option>peça</option><option>m</option><option>m²</option><option>m³</option><option>saco</option><option>kg</option><option>L</option><option>barra</option><option>caixa</option><option>rolo</option><option>dúzia</option></datalist></label>
+    </div>
+    <fieldset class="seg"><legend>Estoque</legend>
+     <label><input type="radio" name="estoque_status" value="disponivel"><span>Em estoque</span></label>
+     <label><input type="radio" name="estoque_status" value="consulta" checked><span>Sob consulta</span></label>
+     <label><input type="radio" name="estoque_status" value="esgotado"><span>Esgotado</span></label>
+    </fieldset>
+    <label>Quantidade em estoque (opcional)<input name="estoque_qtd" type="number" min="0" step="1" placeholder="Ex.: 40"></label>
+    <label>Orientação para o cliente<textarea name="guia" maxlength="200" placeholder="Ex.: Informe a seção, o comprimento e quantas peças."></textarea></label>
+    <label class="switch"><input type="checkbox" name="ativo" checked><span></span>Mostrar no site</label>
+   </div>
+  </div>
+  <p class="err" role="alert"></p>
+  <div class="edFoot">
+   <button type="button" class="danger ghost" data-delete hidden>Excluir</button>
+   <span class="grow"></span>
+   <button type="button" class="ghost" data-close>Cancelar</button>
+   <button class="btn" type="submit">Salvar</button>
+  </div>
+ </form>
+</dialog>
+
+<dialog id="confirm" class="small"><form method="dialog"><h2 data-c-title>Tem certeza?</h2><p data-c-text></p><div class="edFoot"><span class="grow"></span><button class="ghost" value="no">Cancelar</button><button class="btn danger" value="yes">Confirmar</button></div></form></dialog>
+<div id="toast" role="status"></div>
+</body></html>
